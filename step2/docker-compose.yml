@@ -13,9 +13,9 @@ services:
     # buildしたimageにつける名前
     image: custom
 
-    # # TRY: 実行時の環境変数の上書き
-    # environment:
-    #   MESSAGE_PREFIX: "overwrite"
+    # TRY: 実行時の環境変数の上書き
+    environment:
+      MESSAGE_PREFIX: "overwrite"
 
     # # TRY: mongodbを追加してみる
     # links:
