@@ -1,0 +1,13 @@
+version: '3' # docker-composeのversion指定
+services: # 起動するサービスコンテナを書いていく
+  db: # dbサーバーコンテナを起動
+   image: postgres # イメージはdockerhub上のpostgres:latestを使用
+  web: # webサーバーコンテナを起動
+   build: . # カレントディレクトリにあるdockerfileからimage作成
+   command: python3 manage.py runserver 0.0.0.0:8000  ＃ コンテナ起動時に実行されるコマンドを指定
+   volumes:
+    - .:/app # currentディレクトリを/appディレクトリにbind mountする
+   posts:
+    - "8000:8000" # コンテナの8000番を公開
+   depends_on: # webサーバーコンテナが起動する前にdbサーバーコンテナが起動するようにする
+    - db
